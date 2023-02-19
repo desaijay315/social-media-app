@@ -1,14 +1,12 @@
-// routes.ts
-import express from 'express';
-import { login } from '../controllers/authController';
-import { createComment, getCommentsForPost } from '../controllers/postController';
-import { createMessage, getConversation, getMessages } from '../controllers/messageController';
-import { createPost, getPostDetails, getPostsForUser } from './controllers/post.controller';
-import { getUserProfile } from './controllers/user.controller';
+import { Router } from 'express';
+import { signUp, login } from '../controllers/authControllers';
 
-const router = express.Router();
+const router = Router();
 
-router.post('/api/auth/login', login);
-router.post('/api/auth/signup', signup);
+// Sign up route
+router.post('/signup', signUp);
 
-router.get('/api/users/:id', getUserProfile
+// Log in route
+router.post('/login', login);
+
+export { router as authRoutes };
